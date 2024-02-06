@@ -1,0 +1,10 @@
+public class CarlysMotto2 {
+    public static void main(String[] args) {
+        String motto = "Carly's makes the food that makes it a party.";
+        
+        // Display the motto surrounded by a border of asterisks
+        System.out.println("***********************");
+        System.out.println("* " + motto + " *");
+        System.out.println("***********************");
+    }
+}
