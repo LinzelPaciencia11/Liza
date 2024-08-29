@@ -1,0 +1,51 @@
+
+SELECT * FROM Customer
+CREATE TABLE Customer (
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(50) NOT NULL,
+    Address VARCHAR(100) NOT NULL
+);
+INSERT INTO Customer (CustomerID, CustomerName, Address) VALUES
+(1, 'John Doe', '123 Elm St, Springfield'),
+(2, 'Jane Smith', '456 Oak St, Springfield'),
+(3, 'Alice Brown', '789 Maple St, Springfield');
+
+SELECT * FROM Product
+CREATE TABLE Product (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(50) NOT NULL,
+    ProductPrice DECIMAL(10, 2) NOT NULL
+);
+INSERT INTO Product (ProductID, ProductName, ProductPrice) VALUES
+(101, 'Laptop', 1200.00),
+(102, 'Smartphone', 800.00),
+(103, 'Tablet', 600.00);
+
+SELECT * FROM Orders1;
+CREATE TABLE Orders1 (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    ProductID INT,
+    OrderDate DATE NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
+    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+);
+INSERT INTO Orders1 (OrderID, CustomerID, ProductID, OrderDate) VALUES
+(1, 1, 101, '2024-08-25'),
+(2, 2, 102, '2024-08-26'),
+(3, 1, 103, '2024-08-27'),
+(4, 2, 101, '2024-08-28');
+
+SELECT * FROM PhoneNumber2;
+CREATE TABLE PhoneNumber2 (
+    PhoneNumberID INT PRIMARY KEY IDENTITY(1,1),
+    CustomerID INT,
+    PhoneNumber VARCHAR(20),
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+);
+INSERT INTO PhoneNumber2 (CustomerID, PhoneNumber) VALUES
+(1, '123-4567'),
+(1, '987-6543'),
+(2, '555-1234'),
+(3, '444-5678'),
+(3, '333-2222');
